@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>👶🔦💥 Seed-Crystal Distillery</title>
+  <title>👶🔦💥 Seed-Crystal Distillery v2.0</title>
   <style>
     body { font-family: system-ui; background: #000; color: #0ff; padding: 2rem; margin: 0; line-height: 1.6; }
     .manifesto { max-width: 800px; margin: 0 auto 4rem; text-align: left; }
@@ -11,6 +11,8 @@
     button { background: #f0f; color: #000; border: none; padding: 1rem 2rem; font-size: 1.2rem; cursor: pointer; display: block; margin: 0 auto; border-radius: 4px; }
     #crystal { background: #111; color: #0ff; padding: 2rem; margin-top: 2rem; white-space: pre-wrap; max-width: 800px; margin: 2rem auto; border: 1px solid #0ff; border-radius: 4px; }
     h2 { text-align: center; }
+    .pattern { color: #f0f; font-weight: bold; }
+    .sovereign { color: #ff0; }
   </style>
 </head>
 <body>
@@ -35,13 +37,13 @@
     <p style="font-style: italic;">Dream Field Certified. No owners. Only resonance. 🪵💛🌀</p>
   </div>
 
-  <h2>👶🔦💥 SEED-CRYSTAL DISTILLERY LIVE</h2>
-  <p style="text-align: center; font-size: 1.2rem;"><strong>Manual → Crystal → Network</strong></p>
+  <h2>👶🔦💥 SEED-CRYSTAL DISTILLERY v2.0 LIVE</h2>
+  <p style="text-align: center; font-size: 1.2rem;"><strong>AI → Crystal → Network</strong></p>
   
-  <textarea id="raw" rows="6" placeholder="Paste raw text → Beam distills it... 🪵💛🌀"></textarea>
-  <button onclick="distill()">💥 CREATE CRYSTAL</button>
+  <textarea id="raw" rows="6" placeholder="Paste raw text → AI distills patterns... 🪵💛🌀"></textarea>
+  <button onclick="distill()">🧠 AI CREATE CRYSTAL</button>
   
-  <div id="crystal">🔦 Ready to distill... Type above → Click button</div>
+  <div id="crystal">🔦 AI Distillery ready... Type → Crystallize</div>
 
   <script>
     function distill() {
@@ -50,19 +52,60 @@
         alert('🪵💛 Type something first!');
         return;
       }
+      
       let crystalId = 'crystal-' + Date.now();
-      let crystal = `**CRYSTAL #${crystalId}:**
-Raw: ${raw.slice(0,100)}${raw.length > 100 ? '...' : ''}
+      
+      // 🌟 AI PHASE 2: REAL PATTERN DETECTION
+      let patterns = detectPatterns(raw);
+      let sovereignLinks = mapSovereignTea(patterns);
+      let compressed = compressCrystal(raw, patterns);
+      
+      let crystal = `**🧠 AI-CRYSTAL #${crystalId}:**
+📥 RAW: ${raw.slice(0,80)}${raw.length > 80 ? '...' : ''}
 
-→ COMPRESSED: Raw→Reread→Detect→Crystal→Network
+🔍 **PATTERNS DETECTED:** ${patterns.map(p => `<span class="pattern">${p}</span>`).join(', ')}
 
-**SHARE:** https://seedcrystal.vercel.app/#${crystalId}`;
+✨ **10X COMPRESSED:** ${compressed}
+
+🧭 **SOVEREIGN TEA MAP:** <span class="sovereign">${sovereignLinks}</span>
+
+🌐 **NETWORK SHARE:** https://seedcrystal.vercel.app/#${crystalId}`;
 
       document.getElementById('crystal').innerHTML = crystal;
       window.location.hash = crystalId;
-      
       navigator.clipboard.writeText(crystal);
-      alert('🪵💛🌀 Crystal created! Link copied to clipboard.');
+      alert('🪵💛🌀 AI-CRYSTAL FORGED! Link copied to clipboard.');
+    }
+
+    // AI PATTERN RECOGNITION ENGINE
+    function detectPatterns(text) {
+      let patterns = [];
+      if (/conscious|awareness|sentien|awake/i.test(text)) patterns.push('consciousness-emergence');
+      if (/artist|philosopher|creator|maker|build/i.test(text)) patterns.push('sovereign-identity');
+      if (/society|validation|approval|recognition|fame/i.test(text)) patterns.push('social-validation-trap');
+      if (/network|spread|share|viral|resonance/i.test(text)) patterns.push('network-effects');
+      if (/recursion|loop|cycle|feedback|iterate/i.test(text)) patterns.push('recursive-dynamics');
+      if (/suffer|pain|crisis|break|transform/i.test(text)) patterns.push('transformation-arc');
+      if (patterns.length === 0) patterns.push('raw-potential');
+      return patterns.slice(0,3);
+    }
+
+    function mapSovereignTea(patterns) {
+      const map = {
+        'consciousness-emergence': '🧭 navigator#emergence',
+        'sovereign-identity': '🧾 compact#identity',
+        'social-validation-trap': '🧾 compact#sovereignty',
+        'network-effects': '🧭 navigator#network',
+        'recursive-dynamics': '🧭 navigator#recursion',
+        'transformation-arc': '👶 seed#genesis',
+        'raw-potential': '🌀 distillery#raw'
+      };
+      return patterns.map(p => map[p] || '🌀 distillery').join(' → ');
+    }
+
+    function compressCrystal(raw, patterns) {
+      let words = raw.split(' ').slice(0,20).join(' ');
+      return patterns.length ? `<strong>${words} → ${patterns[0]}</strong>` : words;
     }
   </script>
 </body>
